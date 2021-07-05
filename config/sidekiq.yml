@@ -1,3 +1,9 @@
+:schedule:
+  create_movie_worker:
+    cron: '0 0 * 4 4'   # Runs at midnight on Thursday in April
+    class: CreateMovieWorker
+:scheduler:
+  :listened_queues_only:
 :concurrency: 3
 :queues:
   - default
