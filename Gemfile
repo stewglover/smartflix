@@ -22,6 +22,7 @@ gem 'sidekiq'
 gem 'sidekiq-scheduler'
 gem 'webpacker', '~> 5.0'
 gem 'dotenv'
+gem 'rspec'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
