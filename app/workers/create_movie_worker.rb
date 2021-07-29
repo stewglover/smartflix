@@ -1,24 +1,12 @@
-# require 'sidekiq-scheduler'
-require 'net/http'
-require 'json'
-
 class CreateMovieWorker
   include Sidekiq::Worker
   sidekiq_options queue: :movies, retry: false
 
-  def perform
-    movie_title = make_api_call
-    Movie.create!(title: movie_title)
-  end
+  def perform(title)
+    sleep 1
 
-  private
+    movie_params = CreateMovie::ByTitle.call(title)
 
-  def make_api_call
-    uri = URI('http://www.omdbapi.com/')
-    params = { t: Faker::Movie.title, apikey: ENV["OMDB_API"] }
-    uri.query = URI.encode_www_form(params)
-    res = Net::HTTP.get_response(uri)
-    json_res = JSON.parse(res.body)
-    json_res['Title']
+    Movie.create(movie_params)
   end
 end
