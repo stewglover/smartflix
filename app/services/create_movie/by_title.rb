@@ -7,6 +7,7 @@ module CreateMovie
   class ByTitle < ApplicationService
 
     def initialize(title)
+      super()
       @title = title
     end
 
