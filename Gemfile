@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'rubocop'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
+gem 'simplecov'
 gem 'webpacker', '~> 5.0'
 
 
@@ -39,8 +40,12 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'factory_bot_rails'
   gem 'httparty'
   gem 'rspec-rails'
+  gem 'webmock'
+  gem 'vcr'
+
 end
 
 group :development do
