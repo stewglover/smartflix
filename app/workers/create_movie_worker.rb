@@ -3,9 +3,7 @@ class CreateMovieWorker
   sidekiq_options queue: :movies, retry: false
 
   def perform(title)
-    sleep 1
-
-    movie_params = CreateMovie::ByTitle.call(title)
+    movie_params = CreateMovie::ByTitle.call(title: title)
 
     Movie.create(movie_params)
   end
